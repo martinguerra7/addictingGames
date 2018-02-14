@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>P2</title>
+		<link rel="stylesheet" href="TestWebsite.css">
+		<link rel="icon" href="favicon.ico">
+	</head>
+	<body onload="startGame()">
+		<script>
+			var player;
+			var gameBackground;
+			var wall=[];
+			var coin=[];
+			var wall2=[];
+			var coin2=[];
+			var coinCounter;
+			var score;
+			var floorNum;
+			var uno;
+			var ni;
+			var three;
+			var four;
+			let count;
+			let gameOver;
+			var restartButton;
+			var button;
+			let isTpSpot;
+			let tpMarkX;
+			let tpMarkY;
+			let tpMarkSpeedX;
+			let tpMarkSpeedY;
+			let tpMarkFloor;
+			let tpCD;
+			
+			//27	54	81	108	135	162	189	216	243	270
+			//1		2	3	4	5	6	7	8	9	10
+			//540	513 486 459	432	405 378 351 324 297
+			//20	19	18	17	16	15	14	13	12	11
+			
+			//w=0>>18
+			//h=0>>21
+						
+
+			function startGame(){
+				
+				coinCounter=0;
+				floorNum=1;
+				count=0;				
+				gameOver=false;
+				isTpSpot=false;
+				tpCD=50;
+				
+				player=new component(27,27,"assets/player.png",244,406,"player");
+				
+				gameBackground=new component(514,568,"assets/gameBackground.jpg",0,0,"gameBackground");
+				gameBackground2=new component(514,568,"assets/gameBackground2.png",0,0,"gameBackground");
+				
+				score=new component("27px","Consolas","black",351,600,"text");
+				restartButton=new component("27px","Consolas","white",257,284,"text");
+				button=new component(150,40,"black",185,255);
+				
+				uno=new component(27,27,"red",0,0,"ghost",0);
+				ni=new component(27,27,"green",487,0,"ghost",0);
+				three=new component(27,27,"pink",0,541,"ghost",0);
+				four=new component(27,27,"orange",487,541,"ghost",0);
+				
+				//floor 1
+				for(var r=0;r<21;r++){
+					coin[r]=[];
+					wall[r]=[];
+					for(var c=0;c<19;c++){
+						if(r==0||r==20){
+							wall[r][c]=true;
+						}
+						else if(r==1){
+							if(c==0||c==9||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}		
+						else if(r==2){					
+							if(c==1||c==4||c==8||c==10||c==14||c==17){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==3){
+							if(c==0||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+						else if(r==4){
+							if(c==1||c==4||c==6||c==12||c==14||c==17){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==5){
+							if(c==0||c==5||c==9||c==13||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+						else if(r==6){
+							if(c==4||c==8||c==10||c==14){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==7){
+							if(c==4||(c>=6&&c<=12)||c==14){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==8){
+							if(c==4||c==6||c==12||c==14){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==9){
+							if(c==7||c==11){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+						else if(r==10){
+							if(c==4||c==6||c==12||c==14){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==11){
+							if(c==4||(c>=6&&c<=12)||c==14){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==12){
+							if(c==4||c==6||c==12||c==14){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==13){
+							if(c==0||c==9||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+						else if(r==14){
+							if(c==1||c==4||c==8||c==10||c==14||c==17){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==15){
+							if(c==0||c==3||c==15||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+						else if(r==16){
+							if(c==2||c==4||c==6||c==12||c==14||c==16){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==17){
+							if(c==0||c==5||c==9||c==13||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+						else if(r==18){
+							if(c==1||c==8||c==10||c==17){
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+							else{
+								wall[r][c]=true;
+								
+							}
+						}
+						else if(r==19){
+							if(c==0||c==18){
+								wall[r][c]=true;
+							}
+							else{
+								wall[r][c]=false;
+								coin[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+							}
+						}
+					}
+				}
+				
+				//floor 2
+				for(var r=0;r<21;r++){
+					coin2[r]=[];
+					wall2[r]=[];
+					for(var c=0;c<19;c++){
+						if(r==0||r==20){
+							wall2[r][c]=true;
+						}
+						else if((c==0||c==18)&&r!=9){
+							wall2[r][c]=true;
+						}
+						else if((c==1||c==2||c==3||c==17||c==16||c==15)&&
+									(r==6||r==7||r==8||r==10||r==11||r==12)){
+								wall2[r][c]=true;		
+							}
+						else if(c%2==0&&r%2==0){
+							wall2[r][c]=true;
+						}
+						else if(c%2==1&&r%2==0){
+							wall2[r][c]=false;
+							coin2[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+						}
+						else{
+							wall2[r][c]=false;
+							coin2[r][c]=new component(3,3,"white",14+c*27,14+r*27,"coin");
+						}
+					}
+				}
+				myGameArea.start();
+			}
+
+			var myGameArea = {
+				canvas : document.createElement("canvas"),
+				start : function() {
+					this.canvas.width = 514;
+					this.canvas.height = 568+54;
+					this.context = this.canvas.getContext("2d");
+					document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+					this.frameNo=0;
+					this.interval = setInterval(updateGameArea, 20);
+					window.addEventListener('keydown', function (e) {
+						myGameArea.key = e.keyCode;
+					})
+					window.addEventListener('keyup', function (e) {
+						myGameArea.key = false;
+					})
+					window.addEventListener('mousedown', function (e) {
+						myGameArea.x = e.pageX;
+						myGameArea.y = e.pageY;
+					})
+					window.addEventListener('mouseup', function (e) {
+						myGameArea.x = false;
+						myGameArea.y = false;
+					})
+				},
+				clear : function() {
+					this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+				},
+				stop : function() {
+					clearInterval(this.interval);
+					this.restartInterval=setInterval(restart,100);
+				},
+				stopGameOver:function(){
+					clearInterval(this.restartInterval);
+				}
+			}
+
+			function component(width,height,color,x,y,type,floor){
+				this.type = type;
+				if (type == "player"||type=="gameBackground") {
+					this.image = new Image();
+					this.image.src = color;
+				}
+				this.width=width;
+				this.height=height;
+				this.speedX=0;
+				this.speedY=0;
+				this.x=x;
+				this.y=y;
+				this.floor=floor
+				this.update=function(){
+					ctx=myGameArea.context;
+					if (type == "player"||type=="gameBackground") {
+						ctx.drawImage(this.image, 
+							this.x, 
+							this.y,
+							this.width, this.height);
+					}
+					else if(this.type=="text"){
+						ctx.font = this.width + " " + this.height;
+						ctx.fillStyle = color;
+						ctx.textAlign="center"
+						ctx.fillText(this.text, this.x, this.y);
+					}
+					else {
+						ctx.fillStyle=color;
+						ctx.fillRect(this.x,this.y,this.width,this.height);
+					}		
+				}
+				this.newPos=function(){
+					this.x+=this.speedX;
+					this.y+=this.speedY;
+					this.hitEdge();
+				}
+				this.hitEdge=function(){
+					var bot=myGameArea.canvas.height-54-this.height;
+					var right=myGameArea.canvas.width-this.width;
+					if(this.y>bot){
+						this.y=bot;
+						this.speedY=this.speedY*-1;
+					}
+					if(this.y<0){
+						this.y=0;
+						this.speedY=this.speedY*-1;
+					}
+					if(this.x>right){
+						this.x=right;
+						this.speedX=this.speedX*-1;
+					}
+					if(this.x<0){
+						this.x=0;
+						this.speedX=this.speedX*-1;
+					}
+				}
+				this.stop=function(){					
+					this.speedX=0;
+					this.speedY=0;
+				}				
+				this.canMove=function(wal){
+					const realY=this.y-1;
+					const realX=this.x-1;					
+					if(myGameArea.key&&(myGameArea.key==13||myGameArea.key==32)){
+						this.teleport();
+					}
+					if(realY%27==0&&realX%27==0){
+						if(realY/27==9&&(realX/27==0||realX/27==18)){							
+							this.changeFloor();
+						}
+						this.move(wal);
+						if((wal[realY/27][realX/27-1])){
+							if(this.speedX==-1){
+								this.speedX=0;
+							}
+						}
+						if((wal[realY/27][realX/27+1])){
+							if(this.speedX==1){
+								this.speedX=0;
+							}
+						}
+						if((wal[realY/27-1][realX/27])){
+							if(this.speedY==-1){
+								this.speedY=0;
+							}
+						}
+						if((wal[realY/27+1][realX/27])){
+							if(this.speedY==1){
+								this.speedY=0;
+							}
+						}
+					}						
+				}				
+				this.move=function(wal){
+					const realY=this.y-1;
+					const realX=this.x-1;
+					if(!(wal[realY/27][realX/27-1])&&myGameArea.key && (myGameArea.key==37||myGameArea.key==65)){
+						this.moveLeft();
+					}
+					if(!(wal[realY/27][realX/27+1])&&myGameArea.key && (myGameArea.key==39||myGameArea.key==68)){
+						this.moveRight();
+					}
+					if(!(wal[realY/27-1][realX/27])&&myGameArea.key && (myGameArea.key==38||myGameArea.key==87)){
+						this.moveUp();
+					}
+					if(!(wal[realY/27+1][realX/27])&&myGameArea.key && (myGameArea.key==40||myGameArea.key==83)){
+						this.moveDown();
+					}
+				}				
+				this.teleport=function(){					
+					if(isTpSpot&&tpCD<0){
+						this.x=tpMarkX;
+						this.y=tpMarkY;
+						this.speedX=tpMarkSpeedX;
+						this.speedY=tpMarkSpeedY;
+						floorNum=tpMarkFloor;
+						isTpSpot=false;
+						tpCD=50;
+					}
+					else if(isTpSpot==false&&tpCD<0){
+						tpMarkX=this.x-this.x%27+1;
+						tpMarkY=this.y-this.y%27+1;
+						tpMarkSpeedX=this.speedX;
+						tpMarkSpeedY=this.speedY;
+						tpMarkFloor=floorNum;
+						isTpSpot=true;
+						tpCD=50;
+					}
+				}
+				
+				this.ghostMove=function(){
+					this.speedX=(Math.random()*4)-2;
+					this.speedY=(Math.random()*4)-2;
+					if(Math.floor(Math.random()*21)==20){
+						this.floor=floorNum;
+					}
+				}
+				
+				this.moveUp=function(){
+					this.stop();
+					this.speedY = -1;
+				}
+				this.moveDown=function(){
+					this.stop();
+					this.speedY = 1;
+				}
+				this.moveRight=function(){
+					this.stop();
+					this.speedX = 1;
+				}
+				this.moveLeft=function(){
+					this.stop();
+					this.speedX = -1;
+				}
+				
+				this.crashWith=function(otherobj){
+					var myleft = this.x;
+					var myright = this.x + (this.width);
+					var mytop = this.y;
+					var mybottom = this.y + (this.height);
+					var otherleft = otherobj.x;
+					var otherright = otherobj.x + (otherobj.width);
+					var othertop = otherobj.y;
+					var otherbottom = otherobj.y + (otherobj.height);
+					if (((mybottom > othertop) && (mytop < otherbottom) && (myright > otherleft) && (myleft < otherright))){
+						return true;
+					}
+					else{
+						return false
+					}
+				}
+				
+				this.sameFloor=function(){
+					if(this.floor==floorNum){
+						this.update();
+						if(this.crashWith(player)){
+							myGameArea.stop();
+							gameOver=true;
+						}
+					}
+				}
+				
+				this.changeFloor=function(){
+					if(floorNum==0){
+						floorNum=1;
+						this.speedX=this.speedX*-1;
+					}
+					else{
+						floorNum=0;
+						this.speedX=this.speedX*-1;
+					}
+				}
+				
+				this.clicked = function() {
+					var myleft = this.x;
+					var myright = this.x + (this.width);
+					var mytop = this.y;
+					var mybottom = this.y + (this.height);
+					var clicked = true;
+					if ((mybottom < myGameArea.y) || (mytop > myGameArea.y)
+					 || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+						clicked = false;
+					}
+					return clicked;
+				}
+			}
+			
+			function coinUpdate(coi){
+				for(let r=0;r<coi.length;r++){
+					for(let c=0;c<coi[r].length;c++){
+						if(coi[r][c]==null){
+							coi[r].splice(c,1);
+						}
+						else if(coi[r][c].crashWith(player)){
+							coi[r].splice(c,1);
+							coinCounter++;
+						}
+						else{
+							coi[r][c].update();
+						}
+					}
+				}
+			}
+						
+			function updateFloor1(){
+				gameBackground.newPos();
+				gameBackground.update();
+				coinUpdate(coin);
+				player.canMove(wall);
+			}
+			
+			function updateFloor2(){
+				gameBackground2.newPos();
+				gameBackground2.update();
+				coinUpdate(coin2);
+				player.canMove(wall2);
+			}
+			
+			function updateGhost(){
+				if(count==0){
+					uno.ghostMove();
+					ni.ghostMove();
+					three.ghostMove();
+					four.ghostMove();
+					count=60;
+				}
+				uno.newPos();
+				ni.newPos();
+				three.newPos();
+				four.newPos();
+				uno.sameFloor();
+				ni.sameFloor();	
+				three.sameFloor();
+				four.sameFloor();
+				count--;
+			}
+			
+			function updateGameArea() {    	
+				myGameArea.clear();
+				if(floorNum==0){
+					updateFloor1();
+				}
+				else if(floorNum==1){
+					updateFloor2();
+				}
+				score.text="SCORE: "+coinCounter;
+				score.update();
+				player.newPos();	
+				player.update();
+				tpCD--;
+				updateGhost();
+				if(gameOver){
+					restart();
+				}
+			}
+			
+			function restart(){
+				myGameArea.clear();				
+				button.update();
+				restartButton.text="RESTART"
+				restartButton.update();				
+				score.text="SCORE: "+coinCounter;
+				score.update();
+				if(myGameArea.x && myGameArea.y&& button.clicked()){					
+					myGameArea.stopGameOver();
+					startGame();
+				}
+			}
+		</script>
+
+	</body>
+</html>
