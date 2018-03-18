@@ -124,21 +124,18 @@
 					var otherbottom = otherobj.y + (otherobj.height);
 					if (((mybottom > othertop) && (mytop < otherbottom) && (myright > otherleft) && (myleft < otherright))){
 						if(myright>otherleft){
-							this.x=otherleft+1;
-							this.speedX*=-1;
+							this.speedX=this.speedX*-1;
 						}
 						if(myleft<otherright){
-							this.x=otherright-1;
-							this.speedX*=-1;
+							this.speedX=this.speedX*-1;
 						}
 						if(mytop<otherbottom){
-							this.y=otherbottom-1;
-							this.speedY*=-1;
+							this.speedY=this.speedY*-1;
 						}
 						if(mybottom>othertop){
-							this.y=othertop+1;
-							this.speedY*=-1;
+							this.speedY=this.speedY*-1;
 						}
+						count=0;
 					}
 				}
 				this.stop=function(){					
@@ -218,7 +215,8 @@
 					if(i>46&&player.crashWith(bodyArr[i])){
 						gameOver=true;
 					}
-					//ball.ballBounce(bodyArr[i]);
+					if(count>10)
+						ball.ballBounce(bodyArr[i]);
 					bodyArr[i].update();
 				}
 			}
