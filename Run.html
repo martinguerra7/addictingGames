@@ -112,7 +112,7 @@
 					if(myGameArea.keys && (myGameArea.keys [39]||myGameArea.keys [68])){
 						this.moveRight();
 					}
-					if(myGameArea.keys && (myGameArea.keys [40]||myGameArea.keys [83])){
+					if(myGameArea.keys && (myGameArea.keys [40]||myGameArea.keys [83]) && this.y==210-this.height){
 						this.moveDuck();
 					}
 					else if(myGameArea.keys && (myGameArea.keys [38]||myGameArea.keys [87]||myGameArea.keys [32]) && this.y==210-this.height){
