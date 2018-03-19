@@ -10,7 +10,7 @@ body {
 
 .header {
   background-color: #f1f1f1;
-  padding: 5px;
+  padding: 30px;
   text-align: center;
 }
 
@@ -19,7 +19,7 @@ body {
 <body>
 
 <div class="header">
-  <h2>Addicting Games</h2>
+  <h2>Addicted Games</h2>
 </div>
 
 <style>
@@ -29,8 +29,7 @@ body {
 body, html {
     height: 100%;
     margin: 0;
-    font-family: Cooper Black;
-    font-size: 40px;
+    font-family: Arial;
 }
 
 /* Style tab links */
@@ -58,19 +57,19 @@ body, html {
     height: 100%;
 }
 
-#Home {background-color: #ffeeee;}
-#Game1 {background-color: #eeffee;}
-#Game2 {background-color: #ececff;}
-#Game3 {background-color: #fff8ed;}
-#Profile {background-color: #f2f2e1;}
+#Home {background-color: red;}
+#Game1 {background-color: green;}
+#Game2 {background-color: blue;}
+#Game3 {background-color: maroon;}
+#Profile {background-color: OLIVE;}
 
 </style>
 <body>
 
 <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
-<button class="tablink" onclick="openPage('Game1', this, 'green')">Game 1</button>
-<button class="tablink" onclick="openPage('Game2', this, 'blue')">Game 2</button>
-<button class="tablink" onclick="openPage('Game3', this, '#e78800')">Game 3</button>
+<button class="tablink" onclick="openPage('Game1', this, 'green')">Game1</button>
+<button class="tablink" onclick="openPage('Game2', this, 'blue')">Game2</button>
+<button class="tablink" onclick="openPage('Game3', this, 'maroon')">Game3</button>
 <button class="tablink" onclick="openPage('Profile', this, 'OLIVE')">Profile</button>
 
 <div id="Home" class="tabcontent">
@@ -78,15 +77,25 @@ body, html {
 </div>
 
 <div id="Game1" class="tabcontent">
-  
+  <embed width="800" height="600" base="https://external.kongregate-games.com/gamez/0024/7191/live/" src="https://external.kongregate-games.com/gamez/0024/7191/live/embeddable_247191.swf" type="application/x-shockwave-flash">
+
+  </embed>
+  <br/>Play free games at <a href="https://www.kongregate.com/">Kongregate</a>
+
 </div>
 
 <div id="Game2" class="tabcontent">
- 
+<embed width="640" height="480" base="https://external.kongregate-games.com/gamez/0013/7834/live/" src="https://external.kongregate-games.com/gamez/0013/7834/live/embeddable_137834.swf" type="application/x-shockwave-flash">
+
+</embed>
+<br/>Play free games at <a href="https://www.kongregate.com/">Kongregate</a>
 </div>
 
 <div id="Game3" class="tabcontent">
- 
+<embed width="640" height="480" base="https://external.kongregate-games.com/gamez/0004/3653/live/" src="https://external.kongregate-games.com/gamez/0004/3653/live/embeddable_43653.swf" type="application/x-shockwave-flash">
+
+</embed>
+<br/>Play free games at <a href="https://www.kongregate.com/">Kongregate</a>
 </div>
 
 <div id="Profile" class="tabcontent">
@@ -149,3 +158,4 @@ document.getElementById("defaultOpen").click();
 </body>
 
 </html>
+
