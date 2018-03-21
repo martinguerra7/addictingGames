@@ -1,78 +1,29 @@
 <!DOCTYPE html>
 <html>
+
+<!-- title stuff -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-size: 28px;
-}
-
-.header {
-  background-color: #f1f1f1;
-  padding: 5px;
-  text-align: center;
-}
-
-</style>
+<title>Addicting Games</title>
+<link rel="stylesheet" href="stylesheets/styles.css">
 </head>
+
 <body>
 
 <div class="header">
-  <h2>Addicted Games</h2>
+  <h2>Addicting Games</h2>
 </div>
 
-<style>
- {box-sizing: border-box}
 
-/* Set height of body and the document to 100% */
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Cooper Black;
-    font-size: 40px;
-}
-
-/* Style tab links */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 25px;
-    width: 20%;
-}
-
-.tablink:hover {
-    background-color: #777;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-    color: white;
-    display: none;
-    padding: 100px 20px;
-    height: 100%;
-}
-
-#Home {background-color: #ffeeee;}
-#Game1 {background-color: #eeffee;}
-#Game2 {background-color: #ececff;}
-#Game3 {background-color: #fff8ed;}
-#Profile {background-color: #f2f2e1;}
-
-</style>
-<body>
-
+<!-- //buttons on front page -->
 <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
 <button class="tablink" onclick="openPage('Game1', this, 'green')">Game1</button>
 <button class="tablink" onclick="openPage('Game2', this, 'blue')">Game2</button>
 <button class="tablink" onclick="openPage('Game3', this, '#e78800')">Game3</button>
 <button class="tablink" onclick="openPage('Profile', this, 'OLIVE')">Profile</button>
 
+
+<!-- //one div per tab, depends on what is clicked -->
 <div id="Home" class="tabcontent">
 
 </div>
@@ -80,7 +31,6 @@ body, html {
 <div id="Game1" class="tabcontent">
   <embed width="800" height="600" base="https://external.kongregate-games.com/gamez/0024/7191/live/" src="https://external.kongregate-games.com/gamez/0024/7191/live/embeddable_247191.swf" type="application/x-shockwave-flash">
 
-  </embed>
   <br/>Play free games at <a href="https://www.kongregate.com/">Kongregate</a>
 
 </div>
@@ -88,52 +38,22 @@ body, html {
 <div id="Game2" class="tabcontent">
 <embed width="640" height="480" base="https://external.kongregate-games.com/gamez/0013/7834/live/" src="https://external.kongregate-games.com/gamez/0013/7834/live/embeddable_137834.swf" type="application/x-shockwave-flash">
 
-</embed>
 <br/>Play free games at <a href="https://www.kongregate.com/">Kongregate</a>
 </div>
 
 <div id="Game3" class="tabcontent">
 <embed width="640" height="480" base="https://external.kongregate-games.com/gamez/0004/3653/live/" src="https://external.kongregate-games.com/gamez/0004/3653/live/embeddable_43653.swf" type="application/x-shockwave-flash">
 
-</embed>
 <br/>Play free games at <a href="https://www.kongregate.com/">Kongregate</a>
 </div>
 
 <div id="Profile" class="tabcontent">
   <h3>Profile</h3>
   <p>Coming Soon.</p>
-  <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid blue;
-  border-right: 16px solid green;
-  border-bottom: 16px solid red;
-  border-left: 16px solid yellow;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
-</head>
-<body>
 
 <div class="loader"></div>
 
-</body>
+
 </div>
 
 <script>
@@ -149,14 +69,12 @@ function openPage(pageName,elmnt,color) {
     }
     document.getElementById(pageName).style.display = "block";
     elmnt.style.backgroundColor = color;
-
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
 
-</body>
+
 </body>
 
 </html>
-
