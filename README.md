@@ -1,8 +1,17 @@
 # addictingGames
-Final project for COSC231 - Game Site
+Final project for COSC231 - Addicting Games Site
 
-How we will implement promises into the project responsive design.
+A few of the features we have implemented:
 
-Promises - fake "log-in" before you can play a game
+Seperated the files into a heirarchy:
 
-Responsive design - use bootstrap to layout the game icons on the front page
+AddictingGamesFolder:
+  cssFolder: styles.css
+  javaScriptFolder: main.js
+  index.html
+  
+Styled our front page using stylesheets. Targeted classes and id's
+by using '.' and '#'. Also implemented some CSS animation using webkit.
+
+Imported css and javaScript files from within index.html. Also implemented
+some javascript functions to manipulate the DOM based on buttonClicks. 
