@@ -13,6 +13,14 @@ body, html {
 }
 
 
+.logo_item{
+    
+}
+
+.icons{
+    width: 10%
+}
+
 /* Style tab links */
 .tablink {
     background-color: #555;
