@@ -18,8 +18,8 @@
               <input type="submit" value="Login">
     </form>
   </div>
-  
 
+  <main class="main-content">
   <!-- //buttons on front page -->
   <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen"><img class="icons" src="images/home.ico" alt="HomeIcon"/>Home</button>
   <button class="tablink" onclick="openPage('Pacman', this, 'green')"><img class="icons" src="images/pac.ico" alt="PacmanIcon"/>Pac</button>
@@ -31,11 +31,13 @@
 
   <!-- //one div per tab, depends on what is clicked -->
   <div id="Home" class="tabcontent">
-    
+    <div class="bodyIntro">
+
+    </div>
   </div>
 
   <div id="Pacman"  class="tabcontent">
-    <iframe width="530" height="650" src="games/pacman.html"></iframe>
+    <iframe id="myframe" width="530" height="650" src="games/pacman.html"></iframe>
   </div>
 
   <div id="SnakeGame" class="tabcontent">
@@ -49,19 +51,20 @@
   <div id="Pong" class="tabcontent">
     <iframe scrolling="no" width="1000" height="280"  src="games/pong.html"></iframe>
   </div>
-  
+
   <div id="Profile" class="tabcontent">
     <h3>Profile</h3>
     <p>Coming Soon.</p>
-
     <div class="loader"></div>
 
   </div>
-<script src="scripts/main.js" charset="utf-8"></script>
-</body>
-
+</main>
 <footer>
     <div class="footerText">hello</div>
 </footer>
+<script src="scripts/main.js" charset="utf-8"></script>
+</body>
+
+
 
 </html>
