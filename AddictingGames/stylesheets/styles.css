@@ -1,54 +1,91 @@
 /* Set height of body and the document to 100% */
+
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Cooper Black;
-    font-size: 40px;
+  height: 100%;
+  margin: 0;
+  font-family: Cooper Black;
+  font-size: 40px;
 }
 
 .header {
-  background-color: #f34539;
+  background-color: white;
   padding: 5px;
   text-align: center;
 }
 
-
-.logo_item{
-    
+.body {
+  /*height: 40%;*/
 }
 
-.icons{
-    width: 10%
+.logo_item {
+  width: 25%;
+}
+
+.loginForm {
+  font-size: 15px;
+}
+
+.icons {
+  width: 10%
+}
+
+.footerText {
+  font-size: 10px;
 }
 
 /* Style tab links */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 25px;
-    width: 20%;
-}
-.tablink:hover {
-    background-color: #777;
-}
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-    color: white;
-    display: none;
-    padding: 100px 20px;
-    height: 100%;
-}
-#Home {background-color: #ffeeee;}
-#Game1 {background-color: #eeffee;}
-#Game2 {background-color: #ececff;}
-#Game3 {background-color: #fff8ed;}
-#Profile {background-color: #f2f2e1;}
 
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 25px;
+  width: 16.66666666%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {
+  background-color: #ffeeee;
+}
+
+#Pacman {
+  background-color: #eeffee;
+}
+
+#SnakeGame {
+  background-color: #ececff;
+}
+
+#Run {
+  background-color: #fff8ed;
+}
+
+#Pong {
+  background-color: #fff8ec;
+}
+
+#Profile {
+  background-color: #d5d5d5;
+  font-family: arial;
+  color: #FAFAFA;
+  text-transform: uppercase;
+}
 
 .loader {
   border: 16px solid #f3f3f3;
@@ -62,11 +99,21 @@ body, html {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
+
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
