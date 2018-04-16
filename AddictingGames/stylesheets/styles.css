@@ -3,7 +3,7 @@
 body, html {
   height: 100%;
   margin: 0;
-  font-family: Cooper Black;
+  font-family: Segoe UI Black;
   font-size: 40px;
 }
 
@@ -26,11 +26,26 @@ body, html {
 }
 
 .icons {
-  width: 10%
+  width: 15%
 }
 
+
 .footerText {
-  font-size: 10px;
+  font-family: Segoe UI Black;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.footerText2 {
+  font-family: Franklin Gothic Medium;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.footerText3 {
+  font-size: 12px;
+  padding-left: 10px;
 }
 
 /* Style tab links */
@@ -43,7 +58,7 @@ body, html {
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
-  font-size: 25px;
+  font-size: 80%;
   width: 16.66666666%;
 }
 
