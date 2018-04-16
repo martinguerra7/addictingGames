@@ -29,7 +29,6 @@ body, html {
   width: 15%
 }
 
-
 .footerText {
   font-family: Segoe UI Black;
   font-size: 20px;
@@ -73,6 +72,13 @@ body, html {
   display: none;
   padding: 100px 20px;
   height: 100%;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    font-size: 15px;
+    padding-left: 10px;
 }
 
 #Home {
