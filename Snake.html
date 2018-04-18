@@ -16,11 +16,15 @@
 			var restartButton;
 			var button;
 			var score;
-			
+			var headColor="black";
+			var bodyColor="Red";
+			var segmentColor="yellow";
+			var bodyColor2="black";
+			var ballColor="green";
 			function startGame(){
-				player=new component(15,15,"Purple",10,10,"player");
-				gameBackground=new component(480,270,"Black",0,0,"gameBackground");
-				ball=new component(10,10,"Red",10,10,"ball");
+				player=new component(15,15,headColor,10,10,"player");
+				gameBackground=new component(480,270,"gray",0,0,"gameBackground");
+				ball=new component(10,10,ballColor,10,10,"ball");
 				ball.speedX=2;
 				ball.speedY=1;
 				
@@ -62,9 +66,6 @@
 				},
 				stop : function() {
 					clearInterval(this.interval);
-				},
-				stopGameOver:function(){
-					clearInterval(this.restartInterval);
 				}
 			}
 			function component(width,height,color,x,y,type){
@@ -93,7 +94,7 @@
 					this.y+=this.speedY;
 					this.hitEdge();
 				}
-				this.hitEdge=function(){
+				this.hitEdge=function(otherobj){
 					let bot=myGameArea.canvas.height-this.height;
 					let right=myGameArea.canvas.width-this.width;
 					if(this.y>bot){
@@ -114,26 +115,20 @@
 					}
 				}
 				this.ballBounce=function(otherobj){
-					var myleft = this.x;
-					var myright = this.x + (this.width);
-					var mytop = this.y;
-					var mybottom = this.y + (this.height);
-					var otherleft = otherobj.x;
-					var otherright = otherobj.x + (otherobj.width);
-					var othertop = otherobj.y;
-					var otherbottom = otherobj.y + (otherobj.height);
-					if (((mybottom > othertop) && (mytop < otherbottom) && (myright > otherleft) && (myleft < otherright))){
-						if(myright>otherleft){
-							this.speedX=this.speedX*-1;
-						}
-						if(myleft<otherright){
-							this.speedX=this.speedX*-1;
-						}
-						if(mytop<otherbottom){
+					if(this.crashWith(otherobj)){
+						let bot=otherobj.height-this.height;
+						let right=otherobj.width-this.width;
+						if(this.y>bot){
 							this.speedY=this.speedY*-1;
 						}
-						if(mybottom>othertop){
+						if(this.y<otherobj.Y){
 							this.speedY=this.speedY*-1;
+						}
+						if(this.x>right){
+							this.speedX=this.speedX*-1;
+						}
+						if(this.x<otherobj.x){
+							this.speedX=this.speedX*-1;
 						}
 						count=0;
 					}
@@ -200,11 +195,11 @@
 			}
 			function addBody(){
 				for(let i=0;i<15;i++)
-					bodyArr.push(new component(15,15,"Green",bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
-				bodyArr.push(new component(15,15,"Purple",bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
+					bodyArr.push(new component(15,15,bodyColor,bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
+				bodyArr.push(new component(15,15,segmentColor,bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
 				for(let i=0;i<15;i++)
-					bodyArr.push(new component(15,15,"Green",bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
-				bodyArr.push(new component(15,15,"Purple",bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
+					bodyArr.push(new component(15,15,bodyColor2,bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
+				bodyArr.push(new component(15,15,segmentColor,bodyArr[bodyArr.length-1].x,bodyArr[bodyArr.length-1].y,"body"));
 			}
 			function bodyNewPos(){				
 				for (let i=bodyArr.length-1;i>=1;i--){
@@ -215,7 +210,7 @@
 					if(i>46&&player.crashWith(bodyArr[i])){
 						gameOver=true;
 					}
-					if(count>20)
+					if(count>30)
 						ball.ballBounce(bodyArr[i]);
 					bodyArr[i].update();
 				}
@@ -224,10 +219,11 @@
 				player.move();
 				player.newPos();				
 				bodyNewPos();
-				player.update();
+				player.update();		
+				ballUpdates();
 			}			
 			function spawnBall(){
-				ball=new component(10,10,"Red",(Math.random()*gameBackground.width),(Math.random()*gameBackground.height),"ball");
+				ball=new component(10,10,ballColor,(Math.random()*gameBackground.width),(Math.random()*gameBackground.height),"ball");
 				ball.speedX=2;
 				ball.speedY=1;
 			}
@@ -251,8 +247,7 @@
 				}
 				else{
 					backgroundUpdates();
-					playerUpdates();
-					ballUpdates();				
+					playerUpdates();				
 					count++;
 				}
 			}
