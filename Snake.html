@@ -46,6 +46,9 @@
 					document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 					this.interval = setInterval(updateGameArea, 20);
 					window.addEventListener('keydown', function (e) {
+						if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+			       			e.preventDefault();
+			    		}
 						myGameArea.keys = (myGameArea.keys || []);
 						myGameArea.keys[e.keyCode] = (e.type == "keydown");
 					})
