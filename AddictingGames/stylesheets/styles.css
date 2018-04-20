@@ -13,10 +13,6 @@ body, html {
   text-align: center;
 }
 
-.body {
-  /*height: 40%;*/
-}
-
 .logo_item {
   width: 25%;
 }
@@ -26,26 +22,37 @@ body, html {
 }
 
 .icons {
-  width: 15%
+  width: 15%;
+  vertical-align: middle;
 }
 
-.footerText {
-  font-family: Segoe UI Black;
-  font-size: 20px;
-  padding-left: 10px;
+.bodyIntro {
+    text-align: center;
 }
 
-.footerText2 {
-  font-family: Franklin Gothic Medium;
-  font-size: 14px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+.homePageImage{
+    width: 80%;
 }
 
-.footerText3 {
-  font-size: 12px;
-  padding-left: 10px;
+.footerColumn1{
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 20px;
 }
+
+.footerColumn2{
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 40px;
+}
+
+.footerTextCopy {
+  font-size: 16px;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
 
 /* Style tab links */
 
@@ -58,6 +65,9 @@ body, html {
   cursor: pointer;
   padding: 14px 16px;
   font-size: 80%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 75px;
   width: 16.66666666%;
 }
 
@@ -76,13 +86,16 @@ body, html {
 
 footer {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 1fr;
     font-size: 15px;
+    font-family: TW Cen MT;
     padding-left: 10px;
+    background-color: #dddddd;
+    font-size: 42%;
 }
 
 #Home {
-  background-color: #ffeeee;
+  background-color: #fffff2;
 }
 
 #Pacman {
@@ -106,35 +119,5 @@ footer {
   font-family: arial;
   color: #FAFAFA;
   text-transform: uppercase;
-}
-
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid blue;
-  border-right: 16px solid green;
-  border-bottom: 16px solid red;
-  border-left: 16px solid yellow;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  text-align: center;
 }
